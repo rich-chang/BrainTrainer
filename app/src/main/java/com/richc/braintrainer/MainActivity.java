@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
         resultTextView.setText("");
 
         generateQuestion();
-        
+
     }
 
 
@@ -80,12 +80,19 @@ public class MainActivity extends AppCompatActivity {
         sumTextView.setText(String.format("%d",a) + " + " + String.format("%d",b));
 
         int correctAnsLocation = rand.nextInt(4);
+        int incorrectAns=0;
 
         for (int i=0; i<4; i++) {
             if (i==correctAnsLocation) {
                 answers.add(correctAnswer);
             } else {
-                answers.add(rand.nextInt(40));
+                incorrectAns = rand.nextInt(40);
+
+                while (incorrectAns == correctAnswer) {
+                    incorrectAns = rand.nextInt(40);
+                }
+
+                answers.add(incorrectAns);
             }
         }
 
