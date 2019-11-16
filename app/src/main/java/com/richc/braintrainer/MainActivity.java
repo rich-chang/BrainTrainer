@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
     Button dlButton;
     Button drButton;
     ArrayList<Integer> answers = new ArrayList<>();
-    int correctAnswer;
+    int correctAnsLocation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,11 +52,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     // answerBtn click
-    public void Answer(View view) {
+    public void chooseAnswer(View view) {
         Log.i("tag", view.getTag().toString());
 
         // Check if correct
-        if (answers.get(Integer.valueOf(view.getTag().toString())) == correctAnswer) {
+        //if (answers.get(Integer.valueOf(view.getTag().toString())) == correctAnswer) {
+        if (Integer.valueOf(view.getTag().toString()).equals(correctAnsLocation)) {
             Log.i("answer", "Correct !!!");
 
             resultTextView.setText("Correct !");
@@ -75,20 +76,19 @@ public class MainActivity extends AppCompatActivity {
         Random rand = new Random();
         int a = rand.nextInt(14);
         int b = rand.nextInt(14);
-        correctAnswer = a+b;
 
         sumTextView.setText(String.format("%d",a) + " + " + String.format("%d",b));
 
-        int correctAnsLocation = rand.nextInt(4);
+        correctAnsLocation = rand.nextInt(4);
         int incorrectAns=0;
 
         for (int i=0; i<4; i++) {
             if (i==correctAnsLocation) {
-                answers.add(correctAnswer);
+                answers.add(a+b);
             } else {
                 incorrectAns = rand.nextInt(40);
 
-                while (incorrectAns == correctAnswer) {
+                while (incorrectAns == a+b) {
                     incorrectAns = rand.nextInt(40);
                 }
 
