@@ -17,12 +17,15 @@ public class MainActivity extends AppCompatActivity {
     Button startButton;
     TextView sumTextView;
     TextView resultTextView;
+    TextView scoreTextView;
     Button ulButton;
     Button urButton;
     Button dlButton;
     Button drButton;
     ArrayList<Integer> answers = new ArrayList<>();
     int correctAnsLocation;
+    int score;
+    int numberOfQuestion;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,15 +37,17 @@ public class MainActivity extends AppCompatActivity {
 
         sumTextView = findViewById(R.id.sumTextView);
         resultTextView = findViewById(R.id.resultTextView);
+        scoreTextView = findViewById(R.id.scoreTextView);
         ulButton = findViewById(R.id.upLeftButton);
         urButton = findViewById(R.id.upRightButton);
         dlButton = findViewById(R.id.downLeftButton);
         drButton = findViewById(R.id.downRightButton);
 
         resultTextView.setText("");
+        score = 0;
+        numberOfQuestion = 0;
 
         generateQuestion();
-
     }
 
 
@@ -53,20 +58,19 @@ public class MainActivity extends AppCompatActivity {
 
     // answerBtn click
     public void chooseAnswer(View view) {
-        Log.i("tag", view.getTag().toString());
-
         // Check if correct
-        //if (answers.get(Integer.valueOf(view.getTag().toString())) == correctAnswer) {
         if (Integer.valueOf(view.getTag().toString()).equals(correctAnsLocation)) {
-            Log.i("answer", "Correct !!!");
 
+            score++;
             resultTextView.setText("Correct !");
-
-            generateQuestion();
-
         } else {
             resultTextView.setText("Wrong !");
         }
+
+        numberOfQuestion++;
+        scoreTextView.setText(Integer.toString(score) + "/" + Integer.toString(numberOfQuestion));
+
+        generateQuestion();
     }
 
     public void generateQuestion() {
@@ -80,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
         sumTextView.setText(String.format("%d",a) + " + " + String.format("%d",b));
 
         correctAnsLocation = rand.nextInt(4);
-        int incorrectAns=0;
+        int incorrectAns;
 
         for (int i=0; i<4; i++) {
             if (i==correctAnsLocation) {
