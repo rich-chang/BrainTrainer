@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     // goBtn click
-    public void start() {
+    public void start(View view) {
         startButton.setVisibility(View.INVISIBLE);
     }
 }
