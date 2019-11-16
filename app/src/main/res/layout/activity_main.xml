@@ -50,9 +50,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="TextView"
+            android:text="13 + 43"
             android:textAlignment="center"
-            android:textSize="24sp" />
+            android:textSize="24sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/scoreTextView"
@@ -81,6 +82,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="#2196F3"
+            android:onClick="Answer"
             android:padding="10dp"
             android:tag="0"
             android:text="1"
@@ -96,6 +98,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="#8BC34A"
+            android:onClick="Answer"
             android:padding="10dp"
             android:tag="1"
             android:text="2"
@@ -111,6 +114,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="#AB85EE"
+            android:onClick="Answer"
             android:padding="10dp"
             android:tag="2"
             android:text="3"
@@ -126,6 +130,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="#E79B72"
+            android:onClick="Answer"
             android:padding="10dp"
             android:tag="3"
             android:text="4"
