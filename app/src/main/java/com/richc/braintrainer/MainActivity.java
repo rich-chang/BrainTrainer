@@ -1,6 +1,7 @@
 package com.richc.braintrainer;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -15,6 +16,7 @@ import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
 
+    ConstraintLayout clGame;
     Button startButton;
     TextView sumTextView;
     TextView resultTextView;
@@ -35,9 +37,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        clGame = findViewById(R.id.gameConstraintLayout);
         startButton = findViewById(R.id.startButton);
-        startButton.setVisibility(View.INVISIBLE);
-
         sumTextView = findViewById(R.id.sumTextView);
         resultTextView = findViewById(R.id.resultTextView);
         scoreTextView = findViewById(R.id.scoreTextView);
@@ -55,6 +56,7 @@ public class MainActivity extends AppCompatActivity {
     // startBtn click
     public void start(View view) {
         startButton.setVisibility(View.INVISIBLE);
+        clGame.setVisibility(View.VISIBLE);
     }
 
     // answerBtn click
