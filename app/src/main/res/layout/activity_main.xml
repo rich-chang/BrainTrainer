@@ -67,9 +67,10 @@
     </LinearLayout>
 
     <androidx.gridlayout.widget.GridLayout
+        android:id="@+id/numberGridLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="82dp"
+        android:layout_marginTop="36dp"
         app:columnCount="2"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout"
         app:rowCount="2"
@@ -136,4 +137,16 @@
             app:layout_rowWeight="1" />
 
     </androidx.gridlayout.widget.GridLayout>
+
+    <TextView
+        android:id="@+id/resultTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Correct !"
+        android:textSize="50sp"
+        app:layout_constraintEnd_toStartOf="@+id/startButton"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/startButton"
+        app:layout_constraintTop_toBottomOf="@+id/numberGridLayout" />
 </androidx.constraintlayout.widget.ConstraintLayout>
