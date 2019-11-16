@@ -3,6 +3,7 @@ package com.richc.braintrainer;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -18,10 +19,12 @@ public class MainActivity extends AppCompatActivity {
     TextView sumTextView;
     TextView resultTextView;
     TextView scoreTextView;
+    TextView timerTextView;
     Button ulButton;
     Button urButton;
     Button dlButton;
     Button drButton;
+    Button playAgainButton;
     ArrayList<Integer> answers = new ArrayList<>();
     int correctAnsLocation;
     int score;
@@ -38,16 +41,14 @@ public class MainActivity extends AppCompatActivity {
         sumTextView = findViewById(R.id.sumTextView);
         resultTextView = findViewById(R.id.resultTextView);
         scoreTextView = findViewById(R.id.scoreTextView);
+        timerTextView = findViewById(R.id.timerTextView);
         ulButton = findViewById(R.id.upLeftButton);
         urButton = findViewById(R.id.upRightButton);
         dlButton = findViewById(R.id.downLeftButton);
         drButton = findViewById(R.id.downRightButton);
+        playAgainButton = findViewById(R.id.playAgainbutton);
 
-        resultTextView.setText("");
-        score = 0;
-        numberOfQuestion = 0;
-
-        generateQuestion();
+        playAgain(findViewById(R.id.playAgainbutton));
     }
 
 
@@ -104,5 +105,31 @@ public class MainActivity extends AppCompatActivity {
         urButton.setText(Integer.toString(answers.get(1)));
         dlButton.setText(Integer.toString(answers.get(2)));
         drButton.setText(Integer.toString(answers.get(3)));
+    }
+
+    // playAgainBtn click
+    public void playAgain(View view) {
+
+        generateQuestion();
+
+        playAgainButton.setVisibility(View.INVISIBLE);
+
+        scoreTextView.setText("0/0");
+        resultTextView.setText("");
+        timerTextView.setText("");
+        score = 0;
+        numberOfQuestion = 0;
+
+        new CountDownTimer(3100, 1000) {
+            public void onTick(long millisUntilFinished) {
+                timerTextView.setText(Integer.toString((int)millisUntilFinished/1000) + " sec");
+            }
+
+            public void onFinish() {
+                playAgainButton.setVisibility(View.VISIBLE);
+                timerTextView.setText("0s");
+                resultTextView.setText("Done");
+            }
+        }.start();
     }
 }
